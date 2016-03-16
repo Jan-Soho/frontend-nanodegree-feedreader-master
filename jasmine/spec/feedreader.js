@@ -23,7 +23,6 @@ $(function() {
             expect(allFeeds.length).not.toBe(0);
         });
 
-
         /* The test loops through each feed
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
@@ -34,7 +33,6 @@ $(function() {
                 expect(feed.url.length).not.toBe(0);
             });
         });
-
 
         /* The test loops through each feed
          * in the allFeeds object and ensures it has a name defined
@@ -67,15 +65,11 @@ $(function() {
          * clicked and does it hide when clicked again.
          */
         it('changes visibility when the menu icon is clicked', function() {
-
-
             $('.menu-icon-link').click();
             expect($('body').hasClass('menu-hidden')).toBe(false);
 
             $('.menu-icon-link').click();
             expect($('body').hasClass('menu-hidden')).toBe(true);
-
-
         });
 
     });
@@ -100,29 +94,32 @@ $(function() {
 
     /* Test suite*/
     describe('New Feed Selection', function() {
-    /* The test ensures that when a new feed is loaded
-     * by the loadFeed function that the content actually changes.
-     * Remember, loadFeed() is asynchronous.
-     */
+
+        /* The test ensures that when a new feed is loaded
+         * by the loadFeed function that the content actually changes.
+         * Remember, loadFeed() is asynchronous.
+         */
         var $previousContent,
-        $newContent;
+            $newContent;
 
         beforeEach(function(done) {
             loadFeed(0, function() {
                 $previousContent = $('.feed').html();
+                //console.log($previousContent);
                 done();
             });
         });
 
         beforeEach(function(done) {
             loadFeed(1, function() {
-                $previousContent = $('.feed').html();
+                $newContent = $('.feed').html();
+                //console.log($newContent);
                 done();
             });
         });
 
         it('the content changes when a new feed is loaded', function() {
-                expect($previousContent).not.toEqual($newContent);
+            expect($previousContent).not.toEqual($newContent);
         });
     });
 
