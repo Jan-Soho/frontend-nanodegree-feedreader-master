@@ -88,7 +88,7 @@ $(function() {
         });
 
         it('has at least a single .entry element within the .feed container', function() {
-            expect($('.feed .entry')).not.toBe(0);
+            expect($('.feed .entry').length).not.toBe(0);
         });
     });
 
